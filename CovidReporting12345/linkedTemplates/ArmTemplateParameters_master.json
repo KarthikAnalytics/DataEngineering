@@ -20,6 +20,12 @@
 		"trigger1_properties_typeProperties_scope": {
 			"value": "/subscriptions/0822b12b-3c52-4cee-82c1-763a70b4dbf9/resourceGroups/CovidReporting/providers/Microsoft.Storage/storageAccounts/reportingcovidstorage"
 		},
+		"trigger2_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
+			"value": "covid19/hospital_admissions.csv"
+		},
+		"trigger2_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
+			"value": "hospital_admissions.csv"
+		},
 		"containerUri": {
 			"value": ""
 		},
