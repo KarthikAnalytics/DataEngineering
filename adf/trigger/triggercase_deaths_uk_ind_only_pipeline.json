@@ -2,7 +2,7 @@
 	"name": "triggercase_deaths_uk_ind_only_pipeline",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
