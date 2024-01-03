@@ -1,8 +1,8 @@
 {
-	"name": "trigger2",
+	"name": "trigger_hospital_admission",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
