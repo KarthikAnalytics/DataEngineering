@@ -27,13 +27,37 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/0822b12b-3c52-4cee-82c1-763a70b4dbf9/resourceGroups/CovidReporting/providers/Microsoft.Storage/storageAccounts/reportingcovidstorage"
 		},
-		"trigger2_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
+		"trigger_cases_death_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
+			"type": "string",
+			"defaultValue": "covid19/cases_deaths.csv"
+		},
+		"trigger_cases_death_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
+			"type": "string",
+			"defaultValue": "cases_deaths.csv"
+		},
+		"trigger_hospital_admission_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
 			"type": "string",
 			"defaultValue": "covid19/hospital_admissions.csv"
 		},
-		"trigger2_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
+		"trigger_hospital_admission_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
 			"type": "string",
 			"defaultValue": "hospital_admissions.csv"
+		},
+		"trigger_testing_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
+			"type": "string",
+			"defaultValue": "covid19/testing.csv"
+		},
+		"trigger_testing_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
+			"type": "string",
+			"defaultValue": "testing.csv"
+		},
+		"triggercase_deaths_uk_ind_only_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
+			"type": "string",
+			"defaultValue": "covid19/case_deaths_uk_ind_only.csv"
+		},
+		"triggercase_deaths_uk_ind_only_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
+			"type": "string",
+			"defaultValue": "case_deaths_uk_ind_only.csv"
 		}
 	},
 	"variables": {
@@ -558,7 +582,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/trigger2')]",
+			"name": "[concat(parameters('factoryName'), '/trigger_cases_death_pipeline')]",
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -571,8 +595,42 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {
-							"sourceRelativeURL": "[parameters('trigger2_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL')]",
-							"sinkFileName": "[parameters('trigger2_properties_pl_ingest_ecds_data_parameters_sinkFileName')]"
+							"sourceRelativeURL": "[parameters('trigger_cases_death_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL')]",
+							"sinkFileName": "[parameters('trigger_cases_death_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2024-01-03T13:05:00",
+						"endTime": "2024-01-04T20:52:00",
+						"timeZone": "Pacific Standard Time"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_ingest_ecds_data')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger_hospital_admission')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_ingest_ecds_data",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"sourceRelativeURL": "[parameters('trigger_hospital_admission_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL')]",
+							"sinkFileName": "[parameters('trigger_hospital_admission_properties_pl_ingest_ecds_data_parameters_sinkFileName')]"
 						}
 					}
 				],
@@ -583,8 +641,74 @@
 						"interval": 1,
 						"startTime": "2024-01-01T17:51:00",
 						"endTime": "2024-01-04T01:32:00",
-						"timeZone": "Pacific Standard Time",
-						"schedule": {}
+						"timeZone": "Pacific Standard Time"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_ingest_ecds_data')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger_testing_pipeline')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_ingest_ecds_data",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"sourceRelativeURL": "[parameters('trigger_testing_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL')]",
+							"sinkFileName": "[parameters('trigger_testing_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 15,
+						"startTime": "2024-01-04T13:05:00",
+						"timeZone": "Pacific Standard Time"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pl_ingest_ecds_data')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/triggercase_deaths_uk_ind_only_pipeline')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pl_ingest_ecds_data",
+							"type": "PipelineReference"
+						},
+						"parameters": {
+							"sourceRelativeURL": "[parameters('triggercase_deaths_uk_ind_only_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL')]",
+							"sinkFileName": "[parameters('triggercase_deaths_uk_ind_only_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName')]"
+						}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2024-01-04T13:05:00",
+						"endTime": "2024-01-04T20:55:00",
+						"timeZone": "Pacific Standard Time"
 					}
 				}
 			},

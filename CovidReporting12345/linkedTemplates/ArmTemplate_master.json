@@ -27,13 +27,37 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/0822b12b-3c52-4cee-82c1-763a70b4dbf9/resourceGroups/CovidReporting/providers/Microsoft.Storage/storageAccounts/reportingcovidstorage"
 		},
-		"trigger2_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
+		"trigger_cases_death_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
+			"type": "string",
+			"defaultValue": "covid19/cases_deaths.csv"
+		},
+		"trigger_cases_death_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
+			"type": "string",
+			"defaultValue": "cases_deaths.csv"
+		},
+		"trigger_hospital_admission_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
 			"type": "string",
 			"defaultValue": "covid19/hospital_admissions.csv"
 		},
-		"trigger2_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
+		"trigger_hospital_admission_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
 			"type": "string",
 			"defaultValue": "hospital_admissions.csv"
+		},
+		"trigger_testing_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
+			"type": "string",
+			"defaultValue": "covid19/testing.csv"
+		},
+		"trigger_testing_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
+			"type": "string",
+			"defaultValue": "testing.csv"
+		},
+		"triggercase_deaths_uk_ind_only_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
+			"type": "string",
+			"defaultValue": "covid19/case_deaths_uk_ind_only.csv"
+		},
+		"triggercase_deaths_uk_ind_only_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
+			"type": "string",
+			"defaultValue": "case_deaths_uk_ind_only.csv"
 		},
 		"containerUri": {
 			"type": "string",
@@ -77,11 +101,29 @@
 					"trigger1_properties_typeProperties_scope": {
 						"value": "[parameters('trigger1_properties_typeProperties_scope')]"
 					},
-					"trigger2_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
-						"value": "[parameters('trigger2_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL')]"
+					"trigger_cases_death_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
+						"value": "[parameters('trigger_cases_death_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL')]"
 					},
-					"trigger2_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
-						"value": "[parameters('trigger2_properties_pl_ingest_ecds_data_parameters_sinkFileName')]"
+					"trigger_cases_death_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
+						"value": "[parameters('trigger_cases_death_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName')]"
+					},
+					"trigger_hospital_admission_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
+						"value": "[parameters('trigger_hospital_admission_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL')]"
+					},
+					"trigger_hospital_admission_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
+						"value": "[parameters('trigger_hospital_admission_properties_pl_ingest_ecds_data_parameters_sinkFileName')]"
+					},
+					"trigger_testing_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
+						"value": "[parameters('trigger_testing_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL')]"
+					},
+					"trigger_testing_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
+						"value": "[parameters('trigger_testing_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName')]"
+					},
+					"triggercase_deaths_uk_ind_only_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL": {
+						"value": "[parameters('triggercase_deaths_uk_ind_only_pipeline_properties_pl_ingest_ecds_data_parameters_sourceRelativeURL')]"
+					},
+					"triggercase_deaths_uk_ind_only_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName": {
+						"value": "[parameters('triggercase_deaths_uk_ind_only_pipeline_properties_pl_ingest_ecds_data_parameters_sinkFileName')]"
 					}
 				}
 			},
