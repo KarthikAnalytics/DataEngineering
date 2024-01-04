@@ -199,14 +199,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"sourceRelativeURL": {
-				"type": "string"
-			},
-			"sinkFileName": {
-				"type": "string"
-			}
-		},
 		"variables": {
 			"selectedurl": {
 				"type": "String"
