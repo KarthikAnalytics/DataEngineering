@@ -1,0 +1,20 @@
+{
+	"name": "ds_configfile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "ecdc_file_list_for_2_files.json",
+				"folderPath": "Config/Config",
+				"container": "population"
+			}
+		},
+		"schema": {}
+	}
+}
