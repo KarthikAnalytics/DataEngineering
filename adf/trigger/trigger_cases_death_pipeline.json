@@ -8,10 +8,6 @@
 				"pipelineReference": {
 					"referenceName": "pl_ingest_ecds_data",
 					"type": "PipelineReference"
-				},
-				"parameters": {
-					"sourceRelativeURL": "covid19/cases_deaths.csv",
-					"sinkFileName": "cases_deaths.csv"
 				}
 			}
 		],
